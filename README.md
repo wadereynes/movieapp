@@ -1,47 +1,28 @@
-# Point Doctor
-doctor clinic web application.
+# Movie App
+Browse or Search movies.
 
 ## Requirements
-- install docker version 4.25.2
-- install wsl ubuntu
-- install node version 14.17.6
-- install php version 7.4.24
+- Node 20.11.0
+- Run the Movie App API First
 
 ## Installation
 
-
-
 ```bash
 npm install
-npm run dev
 
 ```
 
 ## Usage
 
 ```php
-docker-compose up -d
-npm run watch
+npx expo start
 ```
 
-## Database Seed
+# Screenshots
 
-```php
-php artisan migrate
-php artisan db:seed
-```
+## Movies
+![home](https://raw.githubusercontent.com/wadereynes/movieapp/master/screenshots/whole-image.PNG)
 
-## Access project
-
-```php
-localhost:8000
-```
-
-## Access Phpmyadmin
-
-```php
-localhost:8001
-```
 
 ## Contributing
 
