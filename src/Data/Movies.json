@@ -1,0 +1,99 @@
+[
+    {
+        "id": 1,
+        "name": "Lohusa",
+        "time": "1s 58dk",
+        "category": "Komedi",
+        "title": "Lohusa, yeni ebeveyn olan bir anne ve babanın ilk 40 gün boyunca başlarına gelen komik olayları anlatıyor.",
+        "image": "https://tr.web.img4.acsta.net/c_310_420/pictures/24/01/02/13/37/0591773.jpg",
+        "star": 4.5,
+        "video": "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4",
+        "director": "Kıvanç Baruönü",
+        "casts": [{"name": "Gupse Özay"}, {"name": "Onur Gürçay"}, {"name": "Hazal Türesan"}]
+
+    },
+    {
+        "id": 2,
+        "name": "Kolpaçino 4 4'lük",
+        "time": "1s 38dk",
+        "category": "Komedi",
+        "title": "Kolpaçino 4 4'lük önceki hikayelerde kendisine kazık atan eski dostlarıyla hesaplaşmaya karar veren Özgür’ün hikayesini konu ediyor",
+        "image": "https://tr.web.img4.acsta.net/c_310_420/pictures/23/11/15/11/53/2228944.jpg",
+        "star": 1.0,
+        "director": "Kıvanç Baruönü",
+        "casts": [{"name": "Gupse Özay"}, {"name": "Onur Gürçay"}, {"name": "Hazal Türesan"}]
+
+    },
+    {
+        "id": 3,
+        "name": "Kolpaçino 4 4'lük",
+        "time": "1s 38dk",
+        "category": "Komedi",
+        "title": "Kolpaçino 4 4'lük önceki hikayelerde kendisine kazık atan eski dostlarıyla hesaplaşmaya karar veren Özgür’ün hikayesini konu ediyor",
+        "image": "https://tr.web.img4.acsta.net/c_310_420/pictures/23/11/15/11/53/2228944.jpg",
+        "star": 1.0,
+        "director": "Kıvanç Baruönü",
+        "casts": [{"name": "Gupse Özay"}, {"name": "Onur Gürçay"}, {"name": "Hazal Türesan"}]
+
+    },
+    {
+        "id": 4,
+        "name": "Kolpaçino 4 4'lük",
+        "time": "1s 38dk",
+        "category": "Komedi",
+        "title": "Kolpaçino 4 4'lük önceki hikayelerde kendisine kazık atan eski dostlarıyla hesaplaşmaya karar veren Özgür’ün hikayesini konu ediyor",
+        "image": "https://tr.web.img4.acsta.net/c_310_420/pictures/23/11/15/11/53/2228944.jpg",
+        "star": 1.0,
+        "director": "Kıvanç Baruönü",
+        "casts": [{"name": "Gupse Özay"}, {"name": "Onur Gürçay"}, {"name": "Hazal Türesan"}]
+
+    },
+    {
+        "id": 5,
+        "name": "Kolpaçino 4 4'lük",
+        "time": "1s 38dk",
+        "category": "Komedi",
+        "title": "Kolpaçino 4 4'lük önceki hikayelerde kendisine kazık atan eski dostlarıyla hesaplaşmaya karar veren Özgür’ün hikayesini konu ediyor",
+        "image": "https://tr.web.img4.acsta.net/c_310_420/pictures/23/11/15/11/53/2228944.jpg",
+        "star": 1.0,
+        "director": "Kıvanç Baruönü",
+        "casts": [{"name": "Gupse Özay"}, {"name": "Onur Gürçay"}, {"name": "Hazal Türesan"}]
+
+    },
+    {
+        "id": 6,
+        "name": "Kolpaçino 4 4'lük",
+        "time": "1s 38dk",
+        "category": "Komedi",
+        "title": "Kolpaçino 4 4'lük önceki hikayelerde kendisine kazık atan eski dostlarıyla hesaplaşmaya karar veren Özgür’ün hikayesini konu ediyor",
+        "image": "https://tr.web.img4.acsta.net/c_310_420/pictures/23/11/15/11/53/2228944.jpg",
+        "star": 1.0,
+        "director": "Kıvanç Baruönü",
+        "casts": [{"name": "Gupse Özay"}, {"name": "Onur Gürçay"}, {"name": "Hazal Türesan"}]
+
+    },
+    {
+        "id": 7,
+        "name": "Kolpaçino 4 4'lük",
+        "time": "1s 38dk",
+        "category": "Komedi",
+        "title": "Kolpaçino 4 4'lük önceki hikayelerde kendisine kazık atan eski dostlarıyla hesaplaşmaya karar veren Özgür’ün hikayesini konu ediyor",
+        "image": "https://tr.web.img4.acsta.net/c_310_420/pictures/23/11/15/11/53/2228944.jpg",
+        "star": 1.0,
+        "director": "Kıvanç Baruönü",
+        "casts": [{"name": "Gupse Özay"}, {"name": "Onur Gürçay"}, {"name": "Hazal Türesan"}]
+
+    },
+    {
+        "id": 8,
+        "name": "Kolpaçino 4 4'lük",
+        "time": "1s 38dk",
+        "category": "Komedi",
+        "title": "Kolpaçino 4 4'lük önceki hikayelerde kendisine kazık atan eski dostlarıyla hesaplaşmaya karar veren Özgür’ün hikayesini konu ediyor",
+        "image": "https://tr.web.img4.acsta.net/c_310_420/pictures/23/11/15/11/53/2228944.jpg",
+        "star": 1.0,
+        "director": "Kıvanç Baruönü",
+        "casts": [{"name": "Gupse Özay"}, {"name": "Onur Gürçay"}, {"name": "Hazal Türesan"}]
+
+    }
+]
