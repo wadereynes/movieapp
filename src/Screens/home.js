@@ -33,14 +33,21 @@ const Home = () => {
 
     const fetchData = async() => {
         try {
+            let query;
+            if (search == '') {
+                query = 'batman';
+            } else {
+                query = search;
+            }
             setDataLoading(true);
             const response = await fetch(
-                `${API_URL}&s=batman&page=${page}`
+                `${API_URL}&s=${query}&page=${page}`
             );
 
             const datalist = await response.json();
 
             setData(prevData => [...prevData, ...datalist.Search]);
+            setOldData(prevData => [...prevData, ...datalist.Search]);
             setDataLoading(false);
             setLoading(false)
         } catch (error) {
@@ -53,6 +60,7 @@ const Home = () => {
     const handleLoadMore = () => {
         if (!dataLoading) {
             setPage(prevPage => prevPage + 1);
+            console.log("Page: "+ page);
             fetchData();
         }
     }
@@ -120,11 +128,11 @@ const Home = () => {
                     <FlatList key={'_'}
                      numColumns={2}
                       data={data}
-                      initialNumToRender={10}
+                    //   initialNumToRender={10}
                     renderItem={renderItem}
                      showsHorizontalScrollIndicator={false}
-                     onEndReached={handleLoadMore}
-                     onEndReachedThreshold={0.5}
+                    //  onEndReached={handleLoadMore}
+                    //  onEndReachedThreshold={0.5}
                      ListFooterComponent={() => (
                         <TouchableOpacity
                             style={style.loadMoreButton}
@@ -168,9 +176,13 @@ const style = StyleSheet.create({
     loadMoreButton: {
         alignItems: 'center',
         padding: 16,
+        backgroundColor: '#764abc',
+        width: '100%',
+        borderRadius: 5,
+        marginBottom: 10,
     },
     loadMoreButtonText: {
-        color: '#764abc',
+        color: '#fff',
         fontWeight: 'bold',
     },
     AndroidSafeArea: {
