@@ -1,10 +1,9 @@
 # Movie App
-Browse or Search movies.
+Browse or Search movies. Using https://www.omdbapi.com/
 
 ## Requirements
 - Node 20.11.0
-- Run the Movie App API First
-
+- Emulator IOS or Android
 ## Installation
 
 ```bash

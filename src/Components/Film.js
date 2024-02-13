@@ -5,20 +5,24 @@ import { useNavigation } from '@react-navigation/native';
 const Film = ({item}) => {
     const history = useNavigation();
     return (
-        <TouchableOpacity onPress={() => history.navigate('detail', {id: item.id})} style={style.container}>
+        <TouchableOpacity onPress={() => history.navigate('detail', {id: item.imdbID})} style={style.container}>
             <View style={style.image_container}>
                 <View style={style.category_container}>
-                    <Text style={style.category}>{item.year}</Text>
+                    <Text style={style.category}>{item.Year}</Text>
                 </View>
                 {/* <View style={style.star_container}>
                     <Text style={style.star}>{item.star}</Text>
                 </View> */}
-                <Image source={{uri: item.images[0].uri}} style={style.image}/>
+                <Image source={{uri: item.Poster}} style={style.image}/>
             </View>
             <View style={style.details_container}>
-                <Text style={style.title}>{item.name}</Text>
+                <Text style={style.title}>{item.Title}</Text>
             </View>
         </TouchableOpacity>
+        // <View>
+        //     <Text>{item.Title}</Text>
+        //     <Image source={{uri: item.Poster}} style={style.image}/>
+        // </View>
     );
 };
 

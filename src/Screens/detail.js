@@ -1,46 +1,19 @@
-import React, {useState, useRef, useEffect} from 'react';
+import React, {useState, useEffect} from 'react';
 import {View, StyleSheet, Text, SafeAreaView, Image, Platform, StatusBar, TouchableOpacity, ScrollView, Button} from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome5';
-import Data from '../Data/Movies.json';
-import StarRating from 'react-native-star-rating';
-import Modal from 'react-native-modal';
-import Video from 'react-native-video';
-import axios from 'axios';
 import { API_URL } from '../Config/Constants';
 
 const Detail = props => {
-    const videoRef = useRef(null);
     const id = props.route.params.id;
     const [loading,setLoading] = useState(true);
     const [data, setData] = useState([]);
-    const [categories, setCategories] = useState([]);
+
     useEffect(() => {
-        axios.get(`${API_URL}/api/movie/${id}`).then((result) => {
-            if(result.data.status){
-                setData(result.data.data.data);
-                setCategories(result.data.data.categories);
-                setLoading(false);
-            } else {
-                alert(result.data.message);
-            }
-        });
-    }, []);
-
-    
-    const [paused, setPaused] = useState('false');
-
-    
-    const item = Data.filter(item => item.id == id)[0];
-    const [isModalVisible, setModalVisible] = useState(false); 
-
-    const Cast = ({ cast }) => {
-        return (
-            <View style={style.cast_container}>
-                <Image style={style.cast_image} source={{ uri: item.image}} />
-                <Text style={style.cast_name}>{cast.name}</Text>
-            </View>
-        );
-    };
+        fetch(`${API_URL}&plot=full&i=${id}`)
+        .then((response)=>response.json())
+        .then((json)=>{setData(json); setLoading(false); })
+        .catch((error) => console.log(error));
+    }, [])
 
     if(loading) {
         return (
@@ -52,6 +25,7 @@ const Detail = props => {
     
     return (
         <SafeAreaView style={style.AndroidSafeArea}>
+            <ScrollView showsVerticalScrollIndicator={false}>
             <View style={{ flex:1 }}>
             <View style={style.header}>
                 <View style={style.controls}>
@@ -68,18 +42,13 @@ const Detail = props => {
                     </TouchableOpacity>
                 </View>
                 <View style={style.overlay} />
-                <Image source={{ uri: data.images[0].uri }} resizeMode="cover" style={style.header_image} />
-                {/* <View style={style.playButtonContainer}>
-                    <TouchableOpacity onPress={() => {setModalVisible(!isModalVisible); setPaused(false); }} style={style.playButton}>
-                        <Icon name='play' size={25} color="white" />
-                    </TouchableOpacity>
-                </View> */}
-                
+                <Image source={{ uri: data.Poster }} resizeMode="cover" style={style.header_image} />
+
                 <View style={style.informationImageContainer}>
-                    <Image style={style.information_image} source={{ uri: data.images[0].uri }} />
+                    <Image style={style.information_image} source={{ uri: data.Poster }} />
                 </View>
                 <View style={style.informationNameContainer}>
-                    <Text style={style.informationName}>{data.name}</Text>
+                    <Text style={style.informationName}>{data.Title}</Text>
                 </View>
             </View>
 
@@ -89,55 +58,32 @@ const Detail = props => {
                     <View style={style.top_right}>
                         <View style={style.top_right_item}>
                             <Icon name="bullhorn" size={15} />
-                            <Text style={style.top_right_item_text}>{data.director}</Text>
+                            <Text style={style.top_right_item_text}>{data.Director}</Text>
                         </View>
                         <View style={style.top_right_item}>
                             <Icon name="calendar" size={15} />
                             <Text style={style.top_right_item_text}>
-                            {data.year}
+                            {data.Year}
                             </Text>
                         </View>
                         <View style={style.top_right_item}>
                             <Icon name="clock" size={15} />
-                            <Text style={style.top_right_item_text}>{data.time}</Text>
+                            <Text style={style.top_right_item_text}>{data.Runtime}</Text>
                         </View>
                         <View style={style.top_right_item}>
-                            <StarRating 
-                                disabled={false}
-                                maxStars={5}
-                                starSize={20}
-                                fullStarColor={'#764abc'}
-                                rating={data.star}
-                                selectedStar={rating => console.log(rating)}
-                            />
+                            <Icon name="star" size={15} />
+                            <Text style={style.top_right_item_text}>{data.imdbRating}/10</Text>
                         </View>
                     </View>
                 </View>
                 <View style={style.content}>
                     <Text style={style.content_text}>
-                        {data.title}
+                        {data.Plot}
                     </Text>
-                    {/* <View style={style.casts}>
-                        {item.casts.map((item)=>(
-                            <Cast cast={item} />
-                        ))}
-                    </View> */}
                 </View>
             </View>
         </View>
-
-        {/* <Modal isVisible={isModalVisible}>
-            <View style={style.modalContainer}>
-                <View style={style.modalBody}>
-                    <TouchableOpacity onPress={() => {setModalVisible(false); setPaused(true);}}  style={style.modalCloseButton}>
-                        <Icon name="times-circle" size={30} color="white" />
-                    </TouchableOpacity>
-                    <Video ref={videoRef} pauses={paused} source={{ uri: item.video }} resizeMode={'cover'} style={style.video} />
-                  
-                </View>
-            </View>
-        </Modal> */}
-
+        </ScrollView>
     </SafeAreaView>
     ); 
 };
