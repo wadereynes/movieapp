@@ -10,19 +10,12 @@ const Film = ({item}) => {
                 <View style={style.category_container}>
                     <Text style={style.category}>{item.Year}</Text>
                 </View>
-                {/* <View style={style.star_container}>
-                    <Text style={style.star}>{item.star}</Text>
-                </View> */}
                 <Image source={{uri: item.Poster}} style={style.image}/>
             </View>
             <View style={style.details_container}>
                 <Text style={style.title}>{item.Title}</Text>
             </View>
         </TouchableOpacity>
-        // <View>
-        //     <Text>{item.Title}</Text>
-        //     <Image source={{uri: item.Poster}} style={style.image}/>
-        // </View>
     );
 };
 

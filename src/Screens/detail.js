@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react';
 import {View, StyleSheet, Text, SafeAreaView, Image, Platform, StatusBar, TouchableOpacity, ScrollView, Button} from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import { API_URL } from '../Config/Constants';
+import * as Progress from 'react-native-progress';
 
 const Detail = props => {
     const id = props.route.params.id;
@@ -18,7 +19,7 @@ const Detail = props => {
     if(loading) {
         return (
             <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center'}}>
-                <Text style={{ fontSize:20 }}>Loading...</Text>
+                <Progress.CircleSnail size={100} thickness={5} color={'rgba(118, 74, 188, 1)'} />
             </View>
         );
     }

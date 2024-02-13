@@ -4,6 +4,7 @@ import Icon from 'react-native-vector-icons/FontAwesome5';
 import Film from '../Components/Film';
 import { API_URL } from '../Config/Constants';
 import { TouchableOpacity } from 'react-native-gesture-handler';
+import * as Progress from 'react-native-progress';
 
 
 
@@ -17,17 +18,44 @@ const Home = () => {
     const [visible, setVisible] = useState(false);
     const [oldData, setOldData] = useState([]);
 
+
+    const [page, setPage] = useState(1);
+    const [dataLoading, setDataLoading] = useState(false);
+
     useEffect(() => {
         LogBox.ignoreLogs(['VirtualizedLists should never be nested']);
     }, [])
 
 
     useEffect(() => {
-        fetch(`${API_URL}&s=batman`)
-        .then((response)=>response.json())
-        .then((json)=>{setData(json.Search); setOldData(json.Search); setLoading(false); })
-        .catch((error) => console.log(error))
-    }, [])
+        fetchData();
+    }, []);
+
+    const fetchData = async() => {
+        try {
+            setDataLoading(true);
+            const response = await fetch(
+                `${API_URL}&s=batman&page=${page}`
+            );
+
+            const datalist = await response.json();
+
+            setData(prevData => [...prevData, ...datalist.Search]);
+            setDataLoading(false);
+            setLoading(false)
+        } catch (error) {
+            console.error('Error fetching data: ', error);
+            setDataLoading(false);
+            setLoading(false);
+        }
+    }
+
+    const handleLoadMore = () => {
+        if (!dataLoading) {
+            setPage(prevPage => prevPage + 1);
+            fetchData();
+        }
+    }
 
 
     const renderItem = ({ item }) => {
@@ -37,7 +65,7 @@ const Home = () => {
     if(loading) {
         return (
             <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center'}}>
-                <Text style={{ fontSize:20 }}>Loading...</Text>
+                <Progress.CircleSnail size={100} thickness={5} color={'rgba(118, 74, 188, 1)'} />
             </View>
         );
     }
@@ -89,7 +117,24 @@ const Home = () => {
                     <Text style={style.body_title}>Films</Text>
                 </View>
                 <View style={{paddingHorizontal: 10, flex: 1}}>
-                    <FlatList key={'_'} numColumns={2} data={data} renderItem={renderItem} showsHorizontalScrollIndicator={false}/>
+                    <FlatList key={'_'}
+                     numColumns={2}
+                      data={data}
+                      initialNumToRender={10}
+                    renderItem={renderItem}
+                     showsHorizontalScrollIndicator={false}
+                     onEndReached={handleLoadMore}
+                     onEndReachedThreshold={0.5}
+                     ListFooterComponent={() => (
+                        <TouchableOpacity
+                            style={style.loadMoreButton}
+                            onPress={handleLoadMore}
+                        >
+                            <Text style={style.loadMoreButtonText}>{dataLoading ? 'Loading...' : 'Load More'}</Text>
+
+                        </TouchableOpacity>
+                     )}
+                     />
                 </View>
             </ScrollView>
         </SafeAreaView>
@@ -119,6 +164,14 @@ const style = StyleSheet.create({
         fontSize: 16,
         fontWeight: '500',
         marginBottom: 20,
+    },
+    loadMoreButton: {
+        alignItems: 'center',
+        padding: 16,
+    },
+    loadMoreButtonText: {
+        color: '#764abc',
+        fontWeight: 'bold',
     },
     AndroidSafeArea: {
         flex: 1,
